@@ -6,6 +6,15 @@ class Formulario extends Component {
 		nombre: '',
 		categoria: ''
 	};
+
+	// si el usuario agrega un evento o categoria
+
+	obtenerDatosEvento = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
+
 	render() {
 		return (
 			<form>
@@ -15,11 +24,18 @@ class Formulario extends Component {
 
 				<div className="uk-column-1-3@m uk-margin">
 					<div className="uk-margin" uk-margin="true">
-						<input name="nombre" className="uk-input" type="text" placeholder="Nombre de Evento o Ciudad" />
+						<input
+							name="nombre"
+							className="uk-input"
+							type="text"
+							placeholder="Nombre de Evento o Ciudad"
+							onChange={this.obtenerDatosEvento}
+						/>
 					</div>
 
 					<div className="uk-margin" uk-margin="true">
-						<select className="uk-select" name="categoria">
+						<select className="uk-select" name="categoria" onChange={this.obtenerDatosEvento}>
+							<option value="">--Selecciona Categoría --</option>
 							<CategoriasConsumer>
 								{(value) => {
 									return value.categorias.map((categoria) => (
