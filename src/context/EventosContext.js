@@ -17,7 +17,9 @@ class EventosProvider extends Component {
 
 		// consultar la API con la URL
 		const eventos = await axios(url);
-		console.log(eventos.data.events);
+		this.setState({
+			eventos: eventos.data.events
+		});
 	};
 
 	render() {
